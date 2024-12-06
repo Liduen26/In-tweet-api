@@ -13,12 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/post")
+@RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
-
-    PostController(PostService postService) {
-        this.postService = postService;
-    }
 
     @GetMapping
     public List<PostOutputDTO> getAllParentPosts() {
