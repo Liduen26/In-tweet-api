@@ -23,12 +23,13 @@ public class PostMapper {
 
     public PostOutputDTO entityWithLikesToOutputDTO(PostWithLikeCount post) {
         return PostOutputDTO.builder()
-                .title(post.getTitle())
-                .body(post.getBody())
-                .user(userMapper.entityToOutputDto(post.getUser()))
-                .status(post.getStatus())
-                .createdAt(post.getCreatedAt())
-                .likes(post.getLikeCount())
+                .id(post.id())
+                .title(post.title())
+                .body(post.body())
+                .user(userMapper.entityToOutputDto(post.user()))
+                .status(post.status())
+                .createdAt(post.createdAt())
+                .likes(post.likeCount())
                 .build();
     }
 }

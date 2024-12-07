@@ -1,6 +1,5 @@
 package com.intech.dev.intweet.dto.output;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 @NoArgsConstructor

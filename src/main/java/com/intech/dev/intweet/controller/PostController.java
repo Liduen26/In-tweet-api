@@ -4,10 +4,7 @@ import com.intech.dev.intweet.dto.output.PostOutputDTO;
 import com.intech.dev.intweet.service.PostService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,10 @@ public class PostController {
     public List<PostOutputDTO> getAllParentPosts() {
         List<PostOutputDTO> list = postService.getAllParentPosts();
         return list;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id) {
+        postService.deletePostById(id);
     }
 }

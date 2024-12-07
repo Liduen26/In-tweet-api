@@ -1,8 +1,5 @@
 package com.intech.dev.intweet.dto.output;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.intech.dev.intweet.entity.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @ToString
 public class PostOutputDTO {
+    private Integer id;
     private String title;
     private String body;
     private UserOutputDTO user;

@@ -5,6 +5,7 @@ import com.intech.dev.intweet.entity.Post;
 import com.intech.dev.intweet.mapper.PostMapper;
 import com.intech.dev.intweet.repository.PostRepository;
 import com.intech.dev.intweet.repository.projection.PostWithLikeCount;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,11 @@ public class PostService {
                 .stream()
                 .map(postMapper::entityWithLikesToOutputDTO)
                 .toList();
+    }
+
+    public void deletePostById(Long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Post with ID " + id + " not found when trying to delete it"));
+        postRepository.delete(post);
     }
 }
