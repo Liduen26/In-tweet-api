@@ -20,6 +20,7 @@ public class PostController {
         return list;
     }
 
+    // TODO : Add preAuthorize ADMIN
     @DeleteMapping("/{id}")
     public void deletePost(@PathVariable Long id) {
         postService.deletePostById(id);

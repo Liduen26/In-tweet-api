@@ -12,4 +12,5 @@ public class UserProfileOutputDTO {
     private String username;
     private Boolean admin;
     private long totalLikes;
+    private boolean banned;
 }

@@ -1,7 +1,13 @@
 package com.intech.dev.intweet.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "bans")
 public class Ban {

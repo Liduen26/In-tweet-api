@@ -1,14 +1,15 @@
 package com.intech.dev.intweet.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 
 import java.time.LocalDateTime;
 import java.util.List;
-@RequiredArgsConstructor
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity

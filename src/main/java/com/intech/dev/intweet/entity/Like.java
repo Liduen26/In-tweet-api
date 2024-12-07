@@ -2,7 +2,13 @@ package com.intech.dev.intweet.entity;
 
 import com.intech.dev.intweet.entity.Post;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@RequiredArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "likes")
 public class Like {

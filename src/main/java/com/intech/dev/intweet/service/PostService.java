@@ -19,7 +19,7 @@ public class PostService {
 
     public List<PostOutputDTO> getAllParentPosts() {
         return postRepository.findByParentIsNullWithLikeCount()
-                .orElseThrow(() -> new RuntimeException("No posts found"))
+                .orElseThrow(() -> new EntityNotFoundException("No posts found"))
                 .stream()
                 .map(postMapper::entityWithLikesToOutputDTO)
                 .toList();

@@ -16,6 +16,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT new com.intech.dev.intweet.repository.projection.PostWithLikeCount( p.id, p.title, p.body, p.status, p.createdAt, p.user, COUNT(l) )" +
             "FROM Post p " +
                 "LEFT JOIN Like l ON l.post.id = p.id " +
+            "WHERE p.user.id NOT IN (SELECT b.user.id FROM Ban b)" +
             "GROUP BY p.id")
     Optional<List<PostWithLikeCount>> findByParentIsNullWithLikeCount();
 }
