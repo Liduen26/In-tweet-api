@@ -29,7 +29,10 @@ public class User {
     @Column(nullable = false)
     private Boolean admin;
 
-    @Formula("(SELECT COUNT(*) FROM likes l WHERE l.user_id = id)")
+    @Formula("(SELECT COUNT(*) " +
+            "FROM likes l " +
+            "   JOIN posts p ON l.post_id = p.id " +
+            "WHERE p.user_id = id)")
     private Long totalLikes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
