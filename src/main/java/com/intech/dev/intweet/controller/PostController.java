@@ -2,7 +2,6 @@ package com.intech.dev.intweet.controller;
 
 import com.intech.dev.intweet.dto.output.PostOutputDTO;
 import com.intech.dev.intweet.service.PostService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
