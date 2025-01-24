@@ -1,5 +1,6 @@
 package com.intech.dev.intweet.service;
 
+import com.intech.dev.intweet.constant.RolesConstants;
 import com.intech.dev.intweet.entity.User;
 import com.intech.dev.intweet.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,12 @@ public class SecurityService implements UserDetailsService {
         User user = repository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("L'utilisateur " + username + " n'existe pas"));
 
+        String role = user.getAdmin() ? RolesConstants.ADMIN : RolesConstants.USER;
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
+                .roles(role)
                 .build();
     }
 }

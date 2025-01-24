@@ -7,6 +7,7 @@ import com.intech.dev.intweet.repository.PostRepository;
 import com.intech.dev.intweet.repository.projection.PostWithLikeCount;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
