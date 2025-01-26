@@ -3,6 +3,7 @@ package com.intech.dev.intweet.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Formula;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,6 +42,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ban> bans;
+    @Formula("(SELECT COUNT(*) FROM bans b WHERE b.user_id = id)")
+    private Boolean isBanned;
 }
