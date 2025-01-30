@@ -33,13 +33,3 @@ services:
       timeout: 5s
       retries: 5
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin-intweet
-    environment:
-      PMA_HOST: 172.18.0.1
-      PMA_PORT: 3400
-      PMA_USER: user
-      PMA_PASSWORD: secret
-    ports:
-      - "8081:80"
