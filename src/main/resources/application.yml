@@ -2,7 +2,7 @@ spring:
     datasource:
         url: jdbc:mariadb://${DB_HOST:localhost}:${DB_PORT:3306}/intweet
         driver-class-name: org.mariadb.jdbc.Driver
-        username: ${DB_USER:user2}
+        username: ${DB_USER:user}
         password: ${DB_PSW:secret}
     jpa:
         hibernate:

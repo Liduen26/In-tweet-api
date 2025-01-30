@@ -1,0 +1,45 @@
+services:
+  api:
+    image: in-tweet-api
+    container_name: api-intweet
+    ports:
+      - "8443:8080"
+    environment:
+      DB_HOST: 172.18.0.1
+      DB_PORT: 3400
+      DB_USER: user
+      DB_PSW: secret
+      DB_NAME: intweet
+      INIT_DB: true
+    depends_on:
+      mariadb:
+        condition: service_healthy
+        restart: true
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb-intweet
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: intweet
+      MARIADB_USER: user
+      MARIADB_PASSWORD: secret
+    ports:
+      - "3400:3306"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 5s
+      interval: 2s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin-intweet
+    environment:
+      PMA_HOST: 172.18.0.1
+      PMA_PORT: 3400
+      PMA_USER: user
+      PMA_PASSWORD: secret
+    ports:
+      - "8081:80"
