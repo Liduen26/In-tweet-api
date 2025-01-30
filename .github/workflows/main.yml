@@ -52,7 +52,16 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Test bdd
-        run: mysql -uuser -psecret -hmariadb -P3306 -e"SHOW DATABASES"
+        run:  |
+          docker ps -a
+          docker logs $(docker ps -q --filter "name=mariadb")
+          echo "Attente de l'ouverture du port 3306..."
+          until nc -z 127.0.0.1 3306; do
+            echo "Port 3306 non disponible..."
+            sleep 2
+          done
+          echo "Port 3306 ouvert, MariaDB semble prêt !"
+          mysql -uuser -psecret -hlocalhost -P3306 -e"SHOW DATABASES"
 
       - name: 🧪 Exécuter les tests de l'application
         run: mvn test
