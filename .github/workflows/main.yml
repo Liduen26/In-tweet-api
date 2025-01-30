@@ -64,4 +64,4 @@ jobs:
           
 
       - name: 🧪 Exécuter les tests de l'application
-        run: mvn test -DDB_PORT=32768 -DDB_USER=user -DDB_PSW=sercret -DDB_HOST=127.0.0.1
+        run: mvn test -DDB_PORT=32768 -DDB_USER=user -DDB_PSW=secret -DDB_HOST=127.0.0.1
