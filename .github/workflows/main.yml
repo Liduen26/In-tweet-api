@@ -52,7 +52,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Test bdd
-        run: mysql -uuser -psecret -h127.0.0.1 -P3306 -e"SHOW DATABASES"
+        run: mysql -uuser -psecret -hmariadb -P3306 -e"SHOW DATABASES"
 
       - name: 🧪 Exécuter les tests de l'application
         run: mvn test
