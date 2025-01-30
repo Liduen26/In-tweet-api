@@ -51,14 +51,7 @@ jobs:
       - name: 📦 Build avec Maven
         run: mvn clean install -DskipTests
 
-      - name: ⏳ Attendre que MariaDB soit prêt
-        run: |
-          echo "Attente de MariaDB..."
-          until mysqladmin ping -h 127.0.0.1 -uuser -psecret --silent; do
-            echo "MariaDB n'est pas encore prêt..."
-            sleep 2
-          done
-          echo "MariaDB est prêt !"
+    
 
       - name: 🧪 Exécuter les tests de l'application
         run: mvn test
