@@ -35,7 +35,7 @@ jobs:
           MYSQL_PASSWORD: secret
           MYSQL_DATABASE: intweet
           MYSQL_ROOT_PASSWORD: root
-        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=5s --health-timeout=2s --health-retries=3
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
 
 
     steps: 
@@ -51,13 +51,14 @@ jobs:
       - name: 📦 Build avec Maven
         run: mvn clean install -DskipTests
 
-      - name: Verify MariaDB connection
-        env:
-          PORT: ${{ job.services.mariadb.ports[3306] }}
+      - name: ⏳ Attendre que MariaDB soit prêt
         run: |
-          while ! healthcheck.sh --connect --innodb_initialized -h"127.0.0.1" -P"$PORT" --silent; do
-            sleep 1
-          done   
+          echo "Attente de MariaDB..."
+          until mysqladmin ping -h 127.0.0.1 -uuser -psecret --silent; do
+            echo "MariaDB n'est pas encore prêt..."
+            sleep 2
+          done
+          echo "MariaDB est prêt !"
 
       - name: 🧪 Exécuter les tests de l'application
         run: mvn test
