@@ -61,7 +61,7 @@ jobs:
             sleep 2
           done
           echo "Port 32768 ouvert, MariaDB semble prêt !"
-          mysql -uuser -psecret -hlocalhost -P32768 -e"SHOW DATABASES"
+          
 
       - name: 🧪 Exécuter les tests de l'application
-        run: mvn test
+        run: mvn test -DDB_PORT=32768
