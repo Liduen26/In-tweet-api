@@ -4,9 +4,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
+@ToString
 public class SignUpInputDTO {
 
     @NotBlank(message = "Le nom d'utilisateur ne peut pas être vide")
