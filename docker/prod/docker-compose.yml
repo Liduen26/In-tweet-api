@@ -5,7 +5,7 @@ services:
     ports:
       - "8443:8080"
     environment:
-      DB_HOST: 172.18.0.1
+      DB_HOST: mariadb
       DB_PORT: 3400
       DB_USER: user
       DB_PSW: secret
@@ -15,15 +15,23 @@ services:
       mariadb:
         condition: service_healthy
         restart: true
+    healthcheck:
+      test: curl --fail http://localhost:8080/ || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
 
   mariadb:
     image: mariadb:latest
     container_name: mariadb-intweet
     environment:
-      MARIADB_ROOT_PASSWORD: root
+      MARIADB_ROOT_PASSWORD: /run/secrets/db_root_password
       MARIADB_DATABASE: intweet
       MARIADB_USER: user
-      MARIADB_PASSWORD: secret
+      MARIADB_PASSWORD: /run/secrets/db_password
+    volumes:
+      - db-data:/var/lib/mysql
     ports:
       - "3400:3306"
     healthcheck:
@@ -33,3 +41,11 @@ services:
       timeout: 5s
       retries: 5
 
+secrets:
+  db_password:
+     file: db_password.txt
+  db_root_password:
+    file: db_root_password.txt
+
+volumes:
+  db-data:
