@@ -26,18 +26,6 @@ jobs:
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
-    
-    services:
-      mariadb:
-        image: mariadb:latest
-        ports:
-          - 3306
-        env:
-          MYSQL_USER: user
-          MYSQL_PASSWORD: secret
-          MYSQL_DATABASE: intweet
-          MYSQL_ROOT_PASSWORD: root
-        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
         
     steps:
       - name: 📥 Checkout repository
