@@ -118,14 +118,14 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/in-tweet-api:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/in-tweet-api:${{ github.sha }}
 
-      - kompose:
+      - name: kompose convert
         run: |
           cd rep compose de prod
           curl -L https://github.com/kubernetes/kompose/releases/download/v1.35.0/kompose-linux-amd64 -o kompose
           chmod +x ./kompose
           ./kompose convert
 
-      - ticket:
+      - name: Ticketing service
         run: |
           curl -L https://get.helm.sh/helm-v3.17.0-linux-amd64.tar.gz
           dezip chmod
