@@ -120,7 +120,7 @@ jobs:
 
       - name: kompose convert
         run: |
-          cd rep compose de prod
+          cd ./docker/prod
           curl -L https://github.com/kubernetes/kompose/releases/download/v1.35.0/kompose-linux-amd64 -o kompose
           chmod +x ./kompose
           ./kompose convert
