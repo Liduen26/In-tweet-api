@@ -125,11 +125,3 @@ jobs:
           chmod +x ./kompose
           ./kompose convert
 
-      - name: Ticketing service
-        run: |
-          curl -L https://get.helm.sh/helm-v3.17.0-linux-amd64.tar.gz
-          dezip chmod
-          ./helm repo add bugzill https://github.com/mojab/github.io/bugzilla-chart
-          ./helm install --name my-ticketing \
-            --set bugzillaAdminEmail=admin,bugzillaAdminPassword=password,mariadb.=secretpassword \
-            mojab/bugzilla
