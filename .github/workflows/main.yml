@@ -56,7 +56,7 @@ jobs:
       - name: Build and analyze
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jb-0037_intweet-api -Dmaven.test.skip=true
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: 0635153c0f9850b7a661e8454a434637065b2b73
           
   test:
     runs-on: ubuntu-latest
