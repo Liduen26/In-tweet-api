@@ -1,11 +1,9 @@
-server:
-  port: ${APP_PORT:8080}
 spring:
   datasource:
-    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/intweet
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/${DB_NAME}
     driver-class-name: org.mariadb.jdbc.Driver
     username: ${DB_USER}
     password: ${DB_PSW}
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none

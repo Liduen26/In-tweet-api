@@ -55,13 +55,13 @@ jobs:
         run:  |
           docker ps -a
           docker logs $(docker ps -q --filter "name=mariadb")
-          echo "Attente de l'ouverture du port 3306..."
-          until nc -z 127.0.0.1 3306; do
-            echo "Port 3306 non disponible..."
+          echo "Attente de l'ouverture du port 32768..."
+          until nc -z 127.0.0.1 32768; do
+            echo "Port 32768 non disponible..."
             sleep 2
           done
-          echo "Port 3306 ouvert, MariaDB semble prêt !"
-          mysql -uuser -psecret -hlocalhost -P3306 -e"SHOW DATABASES"
+          echo "Port 32768 ouvert, MariaDB semble prêt !"
+          
 
       - name: 🧪 Exécuter les tests de l'application
-        run: mvn test
+        run: mvn test -DDB_PORT=32768 -DDB_USER=user -DDB_PSW=secret -DDB_HOST=127.0.0.1

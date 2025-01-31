@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.intech.dev</groupId>
     <artifactId>in-tweet</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <name>In-tweet-api</name>
     <description>In-tweet-api</description>
     <url/>
