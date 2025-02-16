@@ -41,3 +41,19 @@ Le projet utilise un pipeline CI/CD pour automatiser les phases de build, test e
 
 ## Gestion des tickets
 La gestion des tickets a été effectuée à l'aide de Trello, permettant le suivi des tâches et la répartition du travail entre les contributeurs.
+
+# CICD
+
+## Pipeline de ce projet
+
+Le pipeline s'exécute sur un worker ubuntu, contenant un service avec une base de données mariadb. 
+Il est composé de plusieurs étapes : 
+- Setup de java 21 et de maven
+- Lancement des tests unitaires et d'intégration
+- Upload de l'image sur Docker Hub
+- Convert en fichiers kube via kompose
+
+Un autre pipeline pour l'analyse Sonar, où il va contacter SonarQube pour lancer le scan. 
+
+# Start project
+
