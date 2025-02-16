@@ -28,7 +28,12 @@ Le projet est déployé à l'aide de Docker et Kubernetes.
 - **Fonctionnel** :  
   À compléter
 - **Intégration** :  
-  À compléter
+  - Test d'initialisation : vérifie que le projet se lance correctement en s'assurant que le titre de la page est **"Projet react"**.
+  - Test de formulaire de login :
+    - Envoie le formulaire de login sans credentials.
+    - Vérifie que le front renvoie bien deux erreurs :
+      - **"Le username ne peut pas être vide"**
+      - **"Le password ne peut pas être vide"**
 
 ## Description du pipeline DevOps
 Le projet utilise un pipeline CI/CD pour automatiser les phases de build, test et déploiement.  
